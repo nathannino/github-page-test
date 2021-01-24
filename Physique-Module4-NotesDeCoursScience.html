@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NotesDeCoursScience.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="notesdecourssciencemd">NotesDeCoursScience.md</h1>
+<h2 id="physique-----module-4">Physique --- Module 4</h2>
+<hr>
+<h2 id="les-lentilles-minces-en-dessins">Les lentilles minces en dessins</h2>
+<blockquote>
+<p>Puisqu'il est difficile de prévoir correctement les comportements de réfraction et de réflexion, les physicions ont préféré s'en tenir qu'au comportement de la lumière dans l'air ambient, <strong>Comme si les lentilles ne provoquaient pas de réfraction</strong></p>
+</blockquote>
+<p>Donc, on considère que les lentilles sont qu'un simple ligne, et non un objet.</p>
+<ul>
+<li>Si cela vous rends confus, ne pas en prendre compte. Le texte dit simplement que les calculs sont un peu différent dans la vrai vie que dans ce qu'on apprends, car la vrai vie a plus de variables.</li>
+</ul>
+<p>Une liste de définition sur les lentilles minces</p>
+<ul>
+<li>C'est pas dans le cahier de Vanier, mais c'est bon de le comprendre</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mot</th>
+<th>Lettre</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Centre de courbure</td>
+<td>C</td>
+<td>Désigne le <code>centre du cercle</code> (ou de la sphère) dont un des côtés de la lentille constitue <strong>une portion</strong></td>
+</tr>
+<tr>
+<td>Rayon de courvure</td>
+<td></td>
+<td>Correspond à tout segment de droite qui relie le centre de courbure à un point quelconque de la surface correspondante de la lentille (<code>Bref, imagine le rayon d'un cercle</code>). <strong>Un rayon de courbure est toujours également une normale</strong> (EX : Pour la réfraction)</td>
+</tr>
+<tr>
+<td>L'axe principale</td>
+<td></td>
+<td>Elle est une droite qui <code>relie</code> les centres de courbure des <strong>deux faces de la lentille</strong></td>
+</tr>
+<tr>
+<td>Le centre de la lentille</td>
+<td></td>
+<td>Correspond au centre <code>géométrique</code> de la lentille. <strong>L'axe principal le traverse</strong></td>
+</tr>
+<tr>
+<td>Le foyer principal</td>
+<td>F</td>
+<td>Elle indique l'endroit où les rayons <code>parallèles à l'axe principale</code> <strong>convergent</strong> (Dans les lentilles <strong><code>convergentes</code></strong>) <strong>OU</strong> l'endroit d'où les rayons <strong>semblent provenir</strong> (Dans les lentilles <strong><code>divergentes</code></strong>). <strong>Le foyer principal est situé sur l'axe principal</strong></td>
+</tr>
+<tr>
+<td>Le foyer secondaire</td>
+<td>F'</td>
+<td>Elle est situé sur <code>l'axe principal</code> et de <strong>l'autre coté</strong> de la <code>lentille</code> <strong>par rapport</strong> au <code>foyer principal</code></td>
+</tr>
+<tr>
+<td>La longueur focale</td>
+<td><em>f</em></td>
+<td>Correspond à la distance entre <strong>un</strong> des <code>foyers</code> et le <code>centre de la lentille</code></td>
+</tr>
+</tbody>
+</table>
+<p>Dans une lentille mince, <strong>les deux foyers sont à égale distance du centre de la lentille</strong></p>
+<p>Aussi, les miroirs et les lentilles ne sont pas les mêmes (wow). Ainsi, <strong>on ne peux pas dire</strong> que la <code>longueur focale</code> vaux exactement la moitié de celle du <code>rayon de courbure</code>, même si <strong>c'est le cas pour les mirroirs</strong>.</p>
+<h2 id="comment-repr%C3%A9senter-graphiquement-les-images-dans-les-lentilles-minces">Comment représenter graphiquement les images dans les lentilles minces</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dans un graphique, une lentille <code>convergente</code> sera représenté ainsi :</td>
+<td><img src="https://cdn.discordapp.com/attachments/705834898585288924/802724732071444520/unknown.png" alt="Oups, no internet, please retry"></td>
+</tr>
+<tr>
+<td>Alors qu'une lentille <code>divergente</code> sera représenté ainsi :</td>
+<td><img src="https://cdn.discordapp.com/attachments/705834898585288924/802724761993347092/unknown.png" alt="Oups, no internet, please retry"></td>
+</tr>
+<tr>
+<td>Donc, voici un example de dessins <code>convergente</code> avec les trois rayons :</td>
+<td><img src="https://cdn.discordapp.com/attachments/705834898585288924/802728793034588160/Screenshot_2021-01-23_213710.png" alt="Check if you can still access image links on discord"></td>
+</tr>
+<tr>
+<td>Finalement, voici un example de dessins <code>divergente</code> avec les trois rayons :</td>
+<td><img src="https://cdn.discordapp.com/attachments/705834898585288924/802730249460252672/Screenshot_2021-01-23_213710.png" alt="Check if you can still access image links on discord"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="les-3-rayons">Les 3 rayons</h3>
+<ul>
+<li><strong>Dans une lentille <code>convergente</code></strong>
+<ol>
+<li>Un rayon <strong>parallèle à l'<code>axe principal</code></strong> est réfracté <strong>vers le <code>foyer principal</code></strong> (<em>wow, c'est la définition du foyer</em>)</li>
+<li>Un rayon qui se <strong>passant vers le <code>foyer secondaire</code></strong> est réfracté <strong>parallèlement à l'<code>axe principal</code></strong></li>
+<li>Un rayon <strong>passant par le <code>centre de la lentille</code> ne sera pas dévié</strong></li>
+</ol>
+</li>
+<li><strong>Dans une lentille <code>divergente</code></strong>
+<ol>
+<li>Un rayon <strong>parallèle à l'<code>axe principal</code></strong> est réfracté <strong>de façon à sember provenir du <code>foyer principal</code></strong> (<em>haha c'est encore comme la définition du foyer</em>)</li>
+<li>Un rayon <strong>se dirigeant vers le <code>foyer secondaire</code></strong> est réfracté <strong>parallèlement à l'<code>axe principal</code></strong></li>
+<li>Un rayon <strong>passant par le <code>centre de la lentille</code> n'est pas réfracté</strong></li>
+</ol>
+</li>
+</ul>
+<h2 id="comment-repr%C3%A9senter-math%C3%A9matiquement-les-images-dans-les-lentilles-minces">Comment représenter mathématiquement les images dans les lentilles minces</h2>
+<p><img src="https://cdn.discordapp.com/attachments/705834898585288924/802739672492539914/Screenshot_2021-01-23_213710.png" alt="haha alt-text go brrr"><br>
+.<br>
+<em>Dans le tableau ci-<strong>dessous</strong>, le texte en italique est plus petit que le texte en gras</em></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>d</strong><em>o</em></td>
+<td>Distance entre l'objet et le centre de la lentille</td>
+</tr>
+<tr>
+<td><strong>d</strong><em>i</em></td>
+<td>Distance entre l'image et le centre de la lentille</td>
+</tr>
+<tr>
+<td><em><strong>f</strong></em></td>
+<td>Longueur focale</td>
+</tr>
+<tr>
+<td><strong>h</strong><em>o</em></td>
+<td>Hauteur de l'objet</td>
+</tr>
+<tr>
+<td><strong>h</strong><em>i</em></td>
+<td>Hauteur de l'image</td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td>Grandissement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="formule-afin-de-trouver-la-position-des-images-dans-une-lentille-mince">Formule afin de trouver la position des images dans une lentille mince</h3>
+<h2 id="1do--1di--1f">(1/<strong>d</strong><em>o</em>) + (1/<strong>d</strong><em>i</em>) <strong>=</strong> (1/<strong><em>f</em></strong>)</h2>
+<h3 id="formule-afin-de-trouver-la-taille-et-le-grandissement-des-images-dans-une-lentille-mince">Formule afin de trouver la taille et le grandissement des images dans une lentille mince</h3>
+<h2 id="g--hiho---dido"><strong>G</strong> <strong>=</strong> (<strong>h</strong><em>i</em>/<strong>h</strong><em>o</em>) <strong>=</strong> (-<strong>d</strong><em>i</em>/<strong>d</strong><em>o</em>)</h2>
+<p>Donc, comment est ce qu'on interprête les variables?</p>
+<table>
+<thead>
+<tr>
+<th>Mesure</th>
+<th>Si signe <strong>positif</strong></th>
+<th>Si signe <strong>négatif</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distance de l'image(<strong>d</strong><em>i</em>)</td>
+<td>L'image est <code>réelle</code> (Elle <strong>n'est pas du même côté</strong> de la lentille que l'objet)</td>
+<td>L'image est <code>virtuelle</code> (Elle <strong>est du même côté</strong> de la lentille que l'objet)</td>
+</tr>
+<tr>
+<td>Longueur focale (<em><strong>f</strong></em>)</td>
+<td>La lentille est <code>convergente</code></td>
+<td>la lentille est <code>divergente</code></td>
+</tr>
+<tr>
+<td>Grandissement (<strong>G</strong>) <strong>ET</strong> hauteur de l'image (<strong>h</strong><em>i</em>)</td>
+<td>L'image est <code>droite</code></td>
+<td>L'image est <code>inversé</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="loeil-humain">L'oeil humain</h2>
+<h3 id="cest-%C3%A0-ce-moment-que-jai-d%C3%A9couvert-que-le-cahier-de-vanier-a-des-pages-de-r%C3%A9visions-et-sashant-quil-est-1050pm">C'est à ce moment que j'ai découvert que le cahier de vanier a des pages de révisions, et sashant qu'il est 10:50pm...</h3>
+<ul>
+<li>À la base, l'oeil humain est comme une <code>boîte hermétique</code> (<strong>Le globe oculaire</strong>), percée d'un <code>petit trou</code> (<strong>La pupille</strong>) et dotée d'une surface pouvant <code>capter la lumière</code>(<strong>La rétine</strong>)</li>
+<li>Lorsque la lumière est <strong>faible</strong>, l'<code>iris</code> (La partie coloré/<strong>est un muscle</strong>) se contracte et la <code>pupille</code> (Le trou) s'agrandit. Lorsque la lumière est <strong>intense</strong>, l'<code>iris</code> se relâche et la <code>pupille</code> rétrécit.
+<ul>
+<li><strong>C'est <code>l'adaptation</code></strong></li>
+</ul>
+</li>
+<li>L'oeil possède <strong>deux</strong> lentilles <code>convergentes</code> : <strong>La cornée et le cristallin</strong>.
+<ul>
+<li>La <code>cornée</code> permet de faire <strong>converger</strong> les rayons <strong>sur la <code>rétine</code></strong>.</li>
+<li>Le <code>cristallin</code> permet un ajustement <strong>plus précis</strong> selon la <strong>distance des objets</strong> (Bref, il bouge le point focal de place)
+<ul>
+<li><strong>C'est l'accomodation</strong></li>
+<li>Lorsqu'on observe un objet <strong>lointain</strong>, le <code>cristallin</code> est <strong>mince et allongé</strong></li>
+<li>Lorsqu'on observe un objet <strong>proche</strong>, le <code>cristallin</code> est <strong>court et bombé</strong></li>
+</ul>
+</li>
+<li><strong>La myopie</strong>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Charactérisiques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cause du problème</td>
+<td>Le <code>globe oculaire</code> est <strong>trop long</strong> OU la <code>courbure de la cornée</code> est <strong>trop prononcée</strong></td>
+</tr>
+<tr>
+<td>Endroit où convergent les rayons lumineux</td>
+<td><strong>Devans</strong> la <code>rétine</code></td>
+</tr>
+<tr>
+<td>Difficulté à voir les objets qui sont...</td>
+<td><strong>Éloignés</strong></td>
+</tr>
+<tr>
+<td>Lentilles qui corrigent ce problème</td>
+<td><strong>Divergentes</strong></td>
+</tr>
+<tr>
+<td>Dessins</td>
+<td>Um... regarde dans le cahier p.82</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li><strong>L'hypermétropie</strong>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Charactérisiques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cause du problème</td>
+<td>Le <code>globe oculaire</code> est <strong>trop court</strong> OU la <code>courbure de la cornée</code> est <strong>pas assez courbée</strong></td>
+</tr>
+<tr>
+<td>Endroit où convergent les rayons lumineux</td>
+<td><strong>Derrière</strong> la <code>rétine</code></td>
+</tr>
+<tr>
+<td>Difficulté à voir les objets qui sont...</td>
+<td><strong>Rapprochés</strong></td>
+</tr>
+<tr>
+<td>Lentilles qui corrigent ce problème</td>
+<td><strong>Convergentes</strong></td>
+</tr>
+<tr>
+<td>Dessins</td>
+<td>Um... regarde dans le cahier p.82</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>Avec l'age, le <code>cristallin</code> <strong>perd de sa souplesse</strong>. C'est la <code>presbytie</code>. Il devient alors difficile de voir les objets <strong>proches</strong>. (Un peu comme l'<code>hypermétropie</code>)</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
