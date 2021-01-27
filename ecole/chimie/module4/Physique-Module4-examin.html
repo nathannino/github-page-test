@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>examin.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="examinmd">Examin.md</h1>
+<h2 id="physique-051-504----module-4--les-lentilles-et-l%C5%93il">Physique  051-504  --  Module 4 : Les lentilles et l’œil</h2>
+<h3 id="version-modifi%C3%A9-pour-%C3%A9va">(Version modifié pour ÉVA)</h3>
+<hr>
+<h2 id="choisir-la-meilleure-r%C3%A9ponse-une-seule-par-question">Choisir la meilleure réponse (une seule par question)</h2>
+<h3 id="1-quelle-est-la-forme-dune-lentille-convergente">1. Quelle est la forme d'une lentille convergente ?</h3>
+<p>a. Les bords sont généralement plus épais que le centre.<br>
+<strong><ins>b. Le centre est généralement plus épais que les bords.</ins></strong><br>
+c. Elle comporte deux faces convexes.<br>
+d. Elle comporte deux faces concaves.</p>
+<pre class="hljs"><code><div>Sashant que les deux faces convexes s'applique seulement à une seule forme (sur 3) de lentille convergente, j'ai décidé de ne pas le prendre.
+</div></code></pre>
+<h3 id="2-dans-une-lentille-divergente-comment-un-rayon-incident-parall%C3%A8le-%C3%A0-laxe-principal-est-il-d%C3%A9vi%C3%A9">2. Dans une lentille divergente, comment un rayon incident parallèle à l'axe principal est-il dévié ?</h3>
+<p>a. Il est réfracté parallèlement à l'axe principal.<br>
+b. Il est réfracté vers le foyer.<br>
+<ins><strong>c. Il est réfracté de façon à sembler provenir du foyer.</strong></ins><br>
+d. Il n'est pas dévié et poursuit sa route en ligne droite.</p>
+<h3 id="3-dans-une-lentille-convergente-quelles-sont-les-caract%C3%A9ristiques-de-limage-dun-objet-situ%C3%A9-entre-le-foyer-secondaire-et-la-lentille">3. Dans une lentille convergente, quelles sont les caractéristiques de l'image d'un objet situé entre le foyer secondaire et la lentille ?</h3>
+<p>a. L'image est réelle, inversée, plus petite que l'objet et située plus près de la lentille que l'objet.<br>
+<ins><strong>b. L'image est virtuelle, droite, plus grande que l'objet et située plus loin de la lentille que l'objet.</strong></ins><br>
+c. L'image est réelle, inversée, plus grande que l'objet et située plus loin de la lentille que l'objet.<br>
+d. L'image est virtuelle, droite, de même taille que l'objet et située à la même distance de la lentille que l'objet.<br>
+e. L'image est virtuelle, droite, plus petite que l'objet et située plus près de la lentille que l'objet.</p>
+<h3 id="4-quelle-position-approximative-sera-limage-du-marteau-sur-le-sch%C3%A9ma-suivant-choisir-la-lettre">4. Quelle position (approximative) sera l’image du marteau sur le schéma suivant (choisir la lettre) :</h3>
+<p><img src="https://cdn.discordapp.com/attachments/705834898585288924/803981865920757860/unknown.png" alt="Image"></p>
+<p><strong><ins>Elle est approximativement à la position de la lettre D)</ins></strong></p>
+<h3 id="5-quelles-sont-les-parties-de-l%C5%93il-capables-de-d%C3%A9vier-les-rayons-lumineux">5. Quelles sont les parties de l'œil capables de dévier les rayons lumineux ?</h3>
+<p>a. La cornée et la pupille.<br>
+<strong><ins>b. La cornée et le cristallin.</ins></strong><br>
+c. La cornée et la rétine.<br>
+d. L'iris et le cristallin.</p>
+<h3 id="6-quel-type-de-lunettes-est-utilis%C3%A9-pour-corriger-la-myopie">6. Quel type de lunettes est utilisé pour corriger la myopie ?</h3>
+<p><strong><ins>Réponse : Des lunettes à lentilles divergentes</ins></strong></p>
+<h3 id="7-la-longueur-focale-dune-lentille-convergente-est-de-25-cm-o%C3%B9-se-trouve-limage-dun-objet-situ%C3%A9-%C3%A0-28-cm-devant-cette-lentille--d%C3%A9marche-compl%C3%A8te-exig%C3%A9e">7. La longueur focale d'une lentille convergente est de 2,5 cm. Où se trouve l'image d'un objet situé à 2,8 cm devant cette lentille ? (Démarche complète exigée)</h3>
+<pre class="hljs"><code><div>--- Variable recherché : di (La distance de l'image)
+
+--- Variable connu :
+ - f = 2.5cm (Longueur focale)
+ - do = 2.8cm (distance de l'objet)
+
+--- Formule avec ces variables
+(1/do) + (1/di) = (1/f)
+
+--- Résoudre la formule
+
+(1/do) + (1/di) = (1/f)
+
+(1/2.8) + (1/di) = 1/2.5
+
+1/di = 1/2.5-1/2.8
+
+(1/di)*di = (3/70)*di
+
+(1)/(3/70) = (3/70di)/(3/70)
+
+23.3333... = di
+</div></code></pre>
+<pre class="hljs"><code><div>Vérification car je trouve que la réponse est trop différente des valeurs initialle
+2.5^-1 - 2.8^-1 = 0.042857... ---&gt; 3/70
+  1      3
+----- = ----
+  di     70
+(3di)/3 = (70)/3
+di = 23.3333...
+</div></code></pre>
+<p><strong><ins>Réponse : L'image se trouve à 23.33cm de la lentille</ins></strong></p>
+<h3 id="8-un-objet-plac%C3%A9-%C3%A0-40-cm-devant-une-lentille-divergente-produit-une-image-dont-le-grandissement-est-de-025-quelle-est-la-position-de-cette-image--d%C3%A9marche-compl%C3%A8te-exig%C3%A9e">8. Un objet placé à 4,0 cm devant une lentille divergente produit une image dont le grandissement est de 0,25. Quelle est la position de cette image ? (Démarche complète exigée)</h3>
+<pre class="hljs"><code><div>--- Variable recherché : di (distance de l'image)
+
+--- Variable connus :
+ - do = 4cm (distance de l'objet)
+ - G = 0.25 (Grandissement)
+
+--- formule avec ces variables
+G = -di/do
+
+--- Résoudre la formule
+
+G = -di/do
+
+0.25 = -di/4
+
+(0.25)*4 = (-di/4)*4
+
+(1)/-1 = (-di)/-1
+
+-1 = di
+</div></code></pre>
+<p><strong><ins>Réponse : L'image se trouve à 1cm de la lentille, du même côté de la lentille que l'objet</ins></strong></p>
+<h3 id="9-une-loupe-plac%C3%A9e-%C3%A0-12-cm-dune-coccinelle-produit-une-image-agrandie-deux-fois-quelle-est-la-longueur-focale-de-la-loupe-d%C3%A9marche-compl%C3%A8te-exig%C3%A9e">9. Une loupe placée à 1,2 cm d’une coccinelle produit une image agrandie deux fois.  Quelle est la longueur focale de la loupe? Démarche complète exigée)</h3>
+<pre class="hljs"><code><div>--- Variable recherché : f (longueur focale)
+
+--- Variable connus :
+ - do = 1.2cm (distance de l'objet)
+ - G = 2 (Grandissement)
+
+--- Formules avec ces variables :
+1) G = -di/do               (Trouver la distance de l'image)
+2) (1/di) + (1/do) = (1/f)  (Trouver la longueur focale)
+
+--- Résoudre la première formule :
+
+G = -di/do
+
+2 = -di/1.2
+
+(2)*1.2 = (-di/1.2)*1.2
+
+(2.4)/-1 = (-di)/-1
+
+--&gt; -2.4 = di &lt;--
+
+--- Résoudre la deuxième formule
+
+(1/do) + (1/di) = (1/f)
+
+(1/1.2) + (1/-2.4) = (1/f)
+
+5/12 = 1/f
+
+------------
+ 05     1
+---- = ---
+ 12     f
+
+5f/5 = 12/5
+
+f = 2.4
+------------
+</div></code></pre>
+<p><strong><ins>Réponse : La longueur focale de la loupe est de 2.4cm</ins></strong></p>
+
+</body>
+</html>
