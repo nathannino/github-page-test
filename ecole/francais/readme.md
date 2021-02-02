@@ -1,4 +1,6 @@
 # Examin.md
+This page was made to allow me to share a homework description to someone else
+---
 - 1 page titre  
 - 1 table des matières  
 
