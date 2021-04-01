@@ -1,32 +1,374 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>noteFrV2&period;md</title>
-        <style>
-</style>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<html>
+<head>
+<title>noteFrV2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
 <style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
 </style>
-        
-        
-        
-    </head>
-    <body class="vscode-body">
-        <h1 id="notefrv2md"><a href="http://noteFrV2.html">noteFrV2.md</a></h1>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="notefrv2md">noteFrV2.md</h1>
 <p>Oui, c'est plus ou moins une recopie du cahier, avec un peu moins d'information, écrit en <strong>Markdown</strong> et avec la possibilité de faire un <code>control + F</code> pour rechercher un mot.</p>
-<pre><code><code><div>Ce document démontre aussi mon évolution avec Markdown. Ainsi, les premiers jours ne vont pas être organisé de la même façon que les derniers jours
-</div></code></code></pre>
+<pre class="hljs"><code><div>Ce document démontre aussi mon évolution avec Markdown. Ainsi, les premiers jours ne vont pas être organisé de la même façon que les derniers jours
+</div></code></pre>
 <h2 id="jeudi-le-14-janvier-2021">Jeudi le 14 janvier 2021</h2>
 <ul>
 <li><strong>Le modèle de la phrase de base</strong>
@@ -230,7 +572,7 @@
 </ul>
 <hr>
 <h1 id="le-texte-argumentatif">Le texte argumentatif</h1>
-<h2 id="samedi-23-janvier-2021-1">Samedi 23 janvier 2021</h2>
+<h2 id="samedi-23-janvier-2021">Samedi 23 janvier 2021</h2>
 <ul>
 <li>Le texte argumentatif sert à <strong>défendre une opinion</strong>. Dans un <code>texte argumentatif</code>, le but n'est pas seulement d'exposer et de clarifier sa position comme dans un <code>texte justificatif</code>, mais de convaincre les autres à <strong>adopter</strong> son opinion.
 <ul>
@@ -408,20 +750,20 @@
 <blockquote>
 <p>La personnalisation est indispensable à tout texte argumentatif, particulièrement dans un contexte où plusieurs personnes s'expriment sur un même sujet. On peut y parvenir en personnalisant le <strong>contenu</strong> d'un texte, c'est-à-dire la réflexion qui le sous-tend, et sa <strong>forme</strong>, qui lui donne son ton</p>
 </blockquote>
-<h3 id="personnaliser-le-contenu-la-réflexion"><strong>Personnaliser le contenu (la réflexion)</strong></h3>
+<h3 id="personnaliser-le-contenu-la-r%C3%A9flexion"><strong>Personnaliser le contenu (la réflexion)</strong></h3>
 <blockquote>
 <p>Il est nécessaire pour chaque auteur de s'approprier les informations</p>
 </blockquote>
 <p>L'auteur doit toujours :</p>
 <ul>
-<li>adopter une <strong>position personnelle</strong><pre><code><code><div>La position personnelle donde l'argumentation. L'auteur doit donc, face aux informations et aux opinions diverses, prendre position. Ainsi, après avoir consuilté plusieurs sources, il lui faut parvenir à un choix d'informations pertinent pour la défense de son opinion, et non dresser un compte rendu de toute l'information disponible
-</div></code></code></pre>
+<li>adopter une <strong>position personnelle</strong><pre class="hljs"><code><div>La position personnelle donde l'argumentation. L'auteur doit donc, face aux informations et aux opinions diverses, prendre position. Ainsi, après avoir consuilté plusieurs sources, il lui faut parvenir à un choix d'informations pertinent pour la défense de son opinion, et non dresser un compte rendu de toute l'information disponible
+</div></code></pre>
 </li>
-<li>manifester sa <strong>pensée critique</strong><pre><code><code><div>La pensée critique apparaît quand on traite l'information, c'est-à-dire quand on la réorganise, qu'on l'interroge, qu'on lui cherche des causes et des conséquences, qu'on lui ajoute le fruit d'une recherche personnelle ou qu'on établit, par soi-même, des liens entre différentes sources et différents événements
-</div></code></code></pre>
+<li>manifester sa <strong>pensée critique</strong><pre class="hljs"><code><div>La pensée critique apparaît quand on traite l'information, c'est-à-dire quand on la réorganise, qu'on l'interroge, qu'on lui cherche des causes et des conséquences, qu'on lui ajoute le fruit d'une recherche personnelle ou qu'on établit, par soi-même, des liens entre différentes sources et différents événements
+</div></code></pre>
 </li>
-<li>apporter à la controverse un <strong>sens nouveau et éclairant</strong><pre><code><code><div>Un sens nouveau et éclairant se dégage naturellement quand on envisage le sujet sous un angle différent. On peut choisir, par exemple, l'un des angles ci-dessous
-</div></code></code></pre>
+<li>apporter à la controverse un <strong>sens nouveau et éclairant</strong><pre class="hljs"><code><div>Un sens nouveau et éclairant se dégage naturellement quand on envisage le sujet sous un angle différent. On peut choisir, par exemple, l'un des angles ci-dessous
+</div></code></pre>
 <table>
 <thead>
 <tr>
@@ -456,32 +798,32 @@
 </tr>
 </tbody>
 </table>
-<pre><code><code><div>Cet angle nouveau permet de mieux peser l'impact d'une situation et d'évaluer les principaux enjeux impliqués, notamment ce qu'on peut y perdre, y risquer, y gagner
-</div></code></code></pre>
+<pre class="hljs"><code><div>Cet angle nouveau permet de mieux peser l'impact d'une situation et d'évaluer les principaux enjeux impliqués, notamment ce qu'on peut y perdre, y risquer, y gagner
+</div></code></pre>
 </li>
 </ul>
-<h3 id="des-procédés-pour-personnaliser-le-contenu"><strong>Des procédés pour personnaliser le contenu</strong></h3>
+<h3 id="des-proc%C3%A9d%C3%A9s-pour-personnaliser-le-contenu"><strong>Des procédés pour personnaliser le contenu</strong></h3>
 <blockquote>
 <p>On peut personnaliser la réflexion de plusieurs manières. Certains procédés pour y parvenir sont surtout utiles lorsque l'auteur réfléchit à son sujet. D'autres procédés interviennent davantage durant la phase de l'écriture</p>
 </blockquote>
 <ul>
-<li><strong>Questionner les <code>faits</code></strong><pre><code><code><div>Retourner à la source des  l'information permet de vérifier les chiffres mentionnés, le déroulement réel des événements, leur cause exacte
-</div></code></code></pre>
+<li><strong>Questionner les <code>faits</code></strong><pre class="hljs"><code><div>Retourner à la source des  l'information permet de vérifier les chiffres mentionnés, le déroulement réel des événements, leur cause exacte
+</div></code></pre>
 </li>
-<li><strong>Questionner les <code>idées</code></strong><pre><code><code><div>Analyser les idées sur lesquelles se base une argumentation s'avère toujours très utile, car certaines d'entre elles se révéleront des lieux communs ou des stéréotypes qu'on répète sans réfléchir et qui faussent le jugement 
-</div></code></code></pre>
+<li><strong>Questionner les <code>idées</code></strong><pre class="hljs"><code><div>Analyser les idées sur lesquelles se base une argumentation s'avère toujours très utile, car certaines d'entre elles se révéleront des lieux communs ou des stéréotypes qu'on répète sans réfléchir et qui faussent le jugement 
+</div></code></pre>
 </li>
-<li><strong>Questionner les <code>valeurs</code></strong><pre><code><code><div>Quand un discours ou une situation nous fait réagir sans qu'on en discerne bien la raison, il est souvent éclairant d'identifier les valeurs sur lesquelles ce discours repose ou qui huident les acteurs d'une situation. On peut alors remettre ces valeurs - ou, parfois, cette absence de valeur - en question et leur en opposer d'autres plus fondamentales à nos yeux
-</div></code></code></pre>
+<li><strong>Questionner les <code>valeurs</code></strong><pre class="hljs"><code><div>Quand un discours ou une situation nous fait réagir sans qu'on en discerne bien la raison, il est souvent éclairant d'identifier les valeurs sur lesquelles ce discours repose ou qui huident les acteurs d'une situation. On peut alors remettre ces valeurs - ou, parfois, cette absence de valeur - en question et leur en opposer d'autres plus fondamentales à nos yeux
+</div></code></pre>
 </li>
-<li><strong>Établir des <code>liens</code> logiques entre différents éléments</strong><pre><code><code><div>Quand on argumente, on gagne à établir des liens entre notre sujet et d'autres événements connexes, ou entre différents textes qui parlent de notre sujet. Ces liens logiques servent à comparer des éléments entre eux, à les expliquer les uns par les autres, à les opposer les uns aux autres
-</div></code></code></pre>
+<li><strong>Établir des <code>liens</code> logiques entre différents éléments</strong><pre class="hljs"><code><div>Quand on argumente, on gagne à établir des liens entre notre sujet et d'autres événements connexes, ou entre différents textes qui parlent de notre sujet. Ces liens logiques servent à comparer des éléments entre eux, à les expliquer les uns par les autres, à les opposer les uns aux autres
+</div></code></pre>
 </li>
-<li><strong>Insérer des <code>repères culturels</code></strong><pre><code><code><div>Les repères culturels ressemblent à des points de repère sur une carte géographique : ce sont tous les éléments qui forment la culture générale et qui permettent de se situer dans le domaine de la pensée. Dans un texte argumentatif, les repères culturels ont souvent une valeur d'exemple, d'enseignements, de symbole : ils permettent de dire beaucoup en peu de mots.
-</div></code></code></pre>
+<li><strong>Insérer des <code>repères culturels</code></strong><pre class="hljs"><code><div>Les repères culturels ressemblent à des points de repère sur une carte géographique : ce sont tous les éléments qui forment la culture générale et qui permettent de se situer dans le domaine de la pensée. Dans un texte argumentatif, les repères culturels ont souvent une valeur d'exemple, d'enseignements, de symbole : ils permettent de dire beaucoup en peu de mots.
+</div></code></pre>
 </li>
-<li><strong>Insérer des <code>séquences secondaires</code></strong><pre><code><code><div>Le texte argumentatif contient presque toujours des séquences descriptives et explicatives qui contribuent au développement de son argumentation. Les séquences narratives ou dialogales, quant à elles, y sont plus rares, mais elles permettent d'animer le sujet et elles aident à l'envisager avec un regard neuf. Ces séquences peuvent être employées de manière partielle (par exemple, on peut insérer un début de séquence narrative, sans dénoument ni situation finale)
-</div></code></code></pre>
+<li><strong>Insérer des <code>séquences secondaires</code></strong><pre class="hljs"><code><div>Le texte argumentatif contient presque toujours des séquences descriptives et explicatives qui contribuent au développement de son argumentation. Les séquences narratives ou dialogales, quant à elles, y sont plus rares, mais elles permettent d'animer le sujet et elles aident à l'envisager avec un regard neuf. Ces séquences peuvent être employées de manière partielle (par exemple, on peut insérer un début de séquence narrative, sans dénoument ni situation finale)
+</div></code></pre>
 </li>
 </ul>
 <h3 id="personnaliser-la-forme-le-ton">Personnaliser la forme (le ton)</h3>
@@ -490,7 +832,7 @@
 <p>&gt; Quand il veut personnaliser la forme de son texte, l'auteur choisit les moyens à sa disposition en fonction de leur efficatité, mais il n'est surtout pas tenu de les employer tous, sans quoi il resquerait de surcharger son texte. Ces moyens sont les <strong>marques énonciatives</strong> et les <strong>marques de modalité</strong></p>
 </li>
 <li>
-<h4 id="les-marques-énonciatives">Les marques énonciatives</h4>
+<h4 id="les-marques-%C3%A9nonciatives">Les marques énonciatives</h4>
 <blockquote>
 <p>Les <code>marques énonciatives</code> permettent à l'énonciateur (l'auteur) de faire sentir sa présence dans le texte. Il peut également évoquer directement son destinataire afin que ce dernier se sente interpellé.</p>
 </blockquote>
@@ -538,7 +880,7 @@
 <h3 id="personnaliser-la-forme-le-ton-----partie-2">Personnaliser la forme (le ton) --- partie 2</h3>
 <ul>
 <li>
-<h4 id="les-marques-de-modalité">Les marques de modalité</h4>
+<h4 id="les-marques-de-modalit%C3%A9">Les marques de modalité</h4>
 <blockquote>
 <p>De nombreuses marques de modalité s'offrent à l'auteur afin qu'il laisse <strong>transparaître son <ins>point de vue</ins></strong> dans ses propos ou son engagement envers son sujet. Par opposition, il y a en principe très peu de marques de modalité (sinon aucune) dans une entrée au dictionnaire.</p>
 </blockquote>
@@ -663,5 +1005,5 @@
 </li>
 </ul>
 
-    </body>
-    </html>
+</body>
+</html>
